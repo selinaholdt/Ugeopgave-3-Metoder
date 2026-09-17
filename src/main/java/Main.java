@@ -1,17 +1,24 @@
+import java.util.Scanner;
+
 public class Main {
-//Ugeopgave: Metoder
+
+    //Ugeopgave: Metoder
     //Opgave 1: Bank-konto
     double balance = 0;
     String accountName = "";
+    Scanner scanner = new Scanner(System.in);
 
-    void deposit100(){
-        balance += 100;
+
+    void deposit(double amount) {
+        balance += amount;
     }
-    void withdraw50(){
+
+    void withdraw(double amount) {
         balance -= 50;
     }
-    void printBalance(){
-        System.out.println( accountName + "s balance: " + balance + " kr");
+
+    void printBalance() {
+        System.out.println(accountName + "s balance: " + balance + " kr");
     }
 
     //Opgave 2: Karakter-beregner
@@ -19,16 +26,19 @@ public class Main {
     int examPoints = 0;
     int projectPoints = 0;
 
-    void addAssignmentsPoints(int points){
+    void addAssignmentsPoints(int points) {
         assignmentPoints += points;
     }
-    void addExamPoints(int points){
+
+    void addExamPoints(int points) {
         examPoints += points;
     }
-    void addProjectPoints(int points){
+
+    void addProjectPoints(int points) {
         projectPoints += points;
     }
-    void printTotal(){
+
+    void printTotal() {
         System.out.println("Total assignment points: " + assignmentPoints);
         System.out.println("Total exam points: " + examPoints);
         System.out.println("Total project points: " + projectPoints);
@@ -37,67 +47,71 @@ public class Main {
 
     //Opgave 3: Pris-beregner
 
-    double applyDiscount(double price, double discountPercent){
+    double applyDiscount(double price, double discountPercent) {
         return price - (price * discountPercent / 100);
     }
-    double addTax(double price){
+
+    double addTax(double price) {
         return price * 1.25;
     }
-    double calculateFinalPrice(double basePrice, double discount){
-        double priceAfterDiscount= applyDiscount(basePrice , discount);
+
+    double calculateFinalPrice(double basePrice, double discount) {
+        double priceAfterDiscount = applyDiscount(basePrice, discount);
         double fianlPrice = addTax(priceAfterDiscount);
         return fianlPrice;
     }
 
     //Opgave 4: Statistik-beregner
-    double calculateAverage(int[] numbers){
+    double calculateAverage(int[] numbers) {
         int sum = 0;
         int count = 0;
-        for (int number : numbers){
+        for (int number : numbers) {
             sum += number;
             count++;
         }
         double average = (double) sum / count;
         return average;
     }
-    int findMax(int[] numbers){
+
+    int findMax(int[] numbers) {
         int max = numbers[0];
-        for (int number : numbers){
-            if (max < number){
+        for (int number : numbers) {
+            if (max < number) {
                 max = number;
             }
         }
         return max;
     }
-    int findMin(int[] numbers){
+
+    int findMin(int[] numbers) {
         int min = numbers[0];
-        for (int number : numbers){
-            if (min > number){
+        for (int number : numbers) {
+            if (min > number) {
                 min = number;
             }
         }
         return min;
     }
-    int countAboveAverage(int[] numbers){
+
+    int countAboveAverage(int[] numbers) {
         double average = calculateAverage(numbers);
         int aboveAverage = 0;
-        for (int number : numbers){
-            if (number > average){
+        for (int number : numbers) {
+            if (number > average) {
                 aboveAverage++;
             }
         }
         return aboveAverage;
     }
+    void main() {
 
-
-
-
-    void main(){
         //Opgave 1: Bank-konto
         accountName = "Selina";
-        deposit100();
-        deposit100();
-        withdraw50();
+        System.out.println("Hvor meget vil du indsætte på kontoen?");
+        deposit(Double.parseDouble(scanner.nextLine()));
+        System.out.println("Hvor meget vil du indsætte på kontoen?");
+        deposit(Double.parseDouble(scanner.nextLine()));
+        withdraw(50.0);
         printBalance();
 
         //Opgave 2: Karakter-beregner
@@ -114,11 +128,7 @@ public class Main {
         int[] numbers = {45, 67, 23, 89, 34, 56, 78};
         System.out.println("Gennemsnit: " + calculateAverage(numbers));
         System.out.println("Max: " + findMax(numbers));
-        System.out.println("Min: " +findMin(numbers));
-        System.out.println("Numbers above average: " +countAboveAverage(numbers));
-
-
-
+        System.out.println("Min: " + findMin(numbers));
+        System.out.println("Numbers above average: " + countAboveAverage(numbers));
     }
-
 }

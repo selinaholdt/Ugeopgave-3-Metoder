@@ -9,12 +9,12 @@ public class Debugger {
      */
 
 
-    int smaller = 0; // Lavet en global variabel
-    void main() {
+
+    void main(){
 
         int a = 7, b = 42;
 
-        minimum(a,b);
+        int smaller = minimum(a,b); //Lavet en variabel til at gemme metodens return i.
 
         if (smaller == a) { // Lavet {} om til ().
 
@@ -29,14 +29,15 @@ public class Debugger {
         if (a < b) {
 
             int smaller = a;
+            return smaller; //Indsat return
 
         } else  { //Slettede "statement"
 
             int smaller = b;
+            return smaller; //Indsat return
 
         }
 
-        return smaller;
 
     }
 
